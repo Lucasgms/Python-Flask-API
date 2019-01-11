@@ -1,0 +1,29 @@
+version: '2'
+services:
+  app:
+    container_name: flask_api
+    build: .
+    ports:
+      - 5000:5000
+    links:
+      - db:mongodb
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+  db:
+    container_name: db
+    image: mongo
+    volumes:
+      - ./db:/db
+    ports:
+      - 27017:27017/tcp
+  db_seed:
+    container_name: db_seed
+    image: mongo
+    links:
+      - db
+    volumes:
+      - ./db:/db
+    command:
+      /db/import.sh

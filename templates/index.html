@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>API Python Flask</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container text-center">
+      <h1>API Python Flask with Mongodb</h1>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Endpoint</th>
+            <th>Método/Parâmetros</th>
+            <th>Retorno</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>"/modality-students/[modalidade]/[data-inicial]/[data-final]"</td>
+            <td>
+              <ul>
+                <li>Método: GET</li>
+                <li>
+                  Parâmetros:
+                  <ul>
+                    <li>Nome da modalidade</li>
+                    <li>Data inicial no padrão [ano]-[mes]-[dia] Ex: 2019-01-11</li>
+                    <li>Data final no padrão [ano]-[mes]-[dia] Ex: 2019-01-11</li>
+                  </ul>
+                </li>
+              </ul>
+            </td>
+            <td>
+              Lista de estudantes filtrados por modalidade e período passado.
+            </td>
+          </tr>
+          <tr>
+            <td>"/campus-courses/[campus]"</td>
+            <td>
+              <ul>
+                <li>Método: GET</li>
+                <li>
+                  Parâmetros:
+                  <ul>
+                    <li>Nome do Campus</li>
+                  </ul>
+                </li>
+              </ul>
+            </td>
+            <td>
+              Lista de cursos do campus passado.
+            </td>
+          </tr>
+          <tr>
+            <td>"/count-campus-students/[campus]/[data-inicial]/[data-final]"</td>
+            <td>
+              <ul>
+                <li>Método: GET</li>
+                <li>
+                  Parâmetros:
+                  <ul>
+                    <li>Campus</li>
+                    <li>Data inicial no padrão [ano]-[mes]-[dia] Ex: 2019-01-11</li>
+                    <li>Data final no padrão [ano]-[mes]-[dia] Ex: 2019-01-11</li>
+                  </ul>
+                </li>
+              </ul>
+            </td>
+            <td>
+              Número de estudantes no campus dentro do período passado.
+            </td>
+          </tr>
+          <tr>
+            <td>"/insert-students"</td>
+            <td>
+              <ul>
+                <li>Método: POST</li>
+                <li>
+                  Parâmetros passados no corpo da requisição no seguinte formato:
+                  <br>
+                  {
+                    "campus": "AQ",
+                    "curso": "TÉCNICO EM INFORMÁTICA",
+                    "data_inicio": "2016-05-20",
+                    "idade_ate_31_12_2016": "19.0",
+                    "modalidade": "EAD",
+                    "municipio": "Campo Grande",
+                    "nivel_do_curso": "SUBSEQUENTE",
+                    "nome": "lucas gregory",
+                    "ra": "8570.0"
+                  }
+                </li>
+              </ul>
+            </td>
+            <td>
+              Caso inserido, retorna o estudante que foi passado
+            </td>
+          </tr>
+          <tr>
+            <td>"/delete-students/[ra]/[campus]"</td>
+            <td>
+              <ul>
+                <li>Método: DELETE</li>
+                <li>
+                  Parâmetros:
+                  <ul>
+                    <li>RA(ranking acadêmico)</li>
+                    <li>Campus</li>
+                  </ul>
+                </li>
+              </ul>
+            </td>
+            <td>
+              Caso o aluno exista e seja removido com sucesso, retornará a mensagem 'Documento excluido com sucesso', caso contrário a mensagem será 'Erro ao deletar documento'
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
